@@ -28,9 +28,11 @@ func main() {
 	var data []a
 	var city []string
 	var cinema []string
+	var film []string
 	var input1 int
 	var input2 int
 	m1 := make(map[string]float64)
+	m2 := make(map[string]int)
 
 	file, err := os.Open("data.txt")
 	if err != nil {
@@ -138,6 +140,24 @@ func main() {
 		fmt.Scan(&input2)
 		if input2 <= len(cinema) && input2 > 0 {
 			break
+		}
+	}
+
+	for i := 0; i < len(data); i++ {
+		if cinema[input2-1] == data[i].cinema {
+			m2[data[i].film] = data[i].number
+		}
+	}
+	for k := range m2 {
+		film = append(film, k)
+	}
+	for i := 0; i < len(film)-1; i++ {
+		for j := 0; j < len(film)-i-1; j++ {
+			if m1[film[j]] < m1[film[j+1]] {
+				temp := film[j]
+				film[j] = film[j+1]
+				film[j+1] = temp
+			}
 		}
 	}
 
