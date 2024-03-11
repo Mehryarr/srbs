@@ -31,6 +31,7 @@ func main() {
 	var film []string
 	var input1 int
 	var input2 int
+	var input3 int
 	m1 := make(map[string]float64)
 	m2 := make(map[string]int)
 
@@ -157,6 +158,33 @@ func main() {
 				temp := film[j]
 				film[j] = film[j+1]
 				film[j+1] = temp
+			}
+		}
+	}
+
+	cls()
+	fmt.Println("city :", city[input1-1])
+	fmt.Println("cinema :", cinema[input2-1])
+	for i := 0; i < len(film); i++ {
+		fmt.Println(i+1, "film :", film[i], "number :", m2[film[i]])
+	}
+
+	for i := 0; i < 2; {
+		fmt.Println("input film number")
+		fmt.Scan(&input3)
+		if input3 <= len(film) && input3 > 0 {
+			break
+		}
+	}
+
+	for i := 0; i < len(data); i++ {
+		if city[input1-1] == data[i].city {
+			if cinema[input2-1] == data[i].cinema {
+				if film[input3-1] == data[i].film {
+					for j := 0; j < len(data[i].sans); j++ {
+						fmt.Println(j+1, data[i].sans[j])
+					}
+				}
 			}
 		}
 	}
