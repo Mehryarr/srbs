@@ -7,7 +7,7 @@ import (
 	"strconv"
 )
 
-type cinema struct {
+type a struct {
 	city   string
 	cinema string
 	score  float64
@@ -18,7 +18,7 @@ type cinema struct {
 
 func main() {
 
-	var data []cinema
+	var data []a
 
 	file, err := os.Open("data.txt")
 	if err != nil {
@@ -33,35 +33,31 @@ func main() {
 	file.Close()
 
 	for i := 0; i < len(lines); i++ {
-		var temp cinema
+		var temp a
 		temp.city = lines[i]
 		i++
 		temp.cinema = lines[i]
 		i++
-		a, err := strconv.ParseFloat(lines[i], 64)
-		if err != nil {
-			temp.score = a
+		b, err := strconv.ParseFloat(lines[i], 64)
+		if err == nil {
+			temp.score = b
 			i++
 		}
 		temp.film = lines[i]
 		i++
-		b, err := strconv.Atoi(lines[i])
+		c, err := strconv.Atoi(lines[i])
 		if err == nil {
-			temp.number = b
+			temp.number = c
 			i++
 		}
-		for i := 0; i < len(lines); i++ {
+		for j := 0; j < len(lines); j++ {
 			temp.sans = append(temp.sans, lines[i])
 			i++
 			if lines[i] == "******" {
 				break
 			}
-
 		}
 		data = append(data, temp)
 	}
-	for i := 0; i < len(data); i++ {
-		fmt.Println(data[i].city)
-	}
-
+	fmt.Println(data)
 }
