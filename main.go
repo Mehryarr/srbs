@@ -29,6 +29,7 @@ func main() {
 	var city []string
 	var cinema []string
 	var input1 int
+	var input2 int
 	m1 := make(map[string]float64)
 
 	file, err := os.Open("data.txt")
@@ -123,6 +124,20 @@ func main() {
 				cinema[j] = cinema[j+1]
 				cinema[j+1] = temp
 			}
+		}
+	}
+
+	cls()
+	fmt.Println("city :", city[input1-1])
+	for i := 0; i < len(cinema); i++ {
+		fmt.Println(i+1, "cinema :", cinema[i], "score :", m1[cinema[i]])
+	}
+
+	for i := 0; i < 2; {
+		fmt.Println("input cinema number")
+		fmt.Scan(&input2)
+		if input2 <= len(cinema) && input2 > 0 {
+			break
 		}
 	}
 
