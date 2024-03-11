@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-type a struct {
+type cnm struct {
 	city   string
 	cinema string
 	score  float64
@@ -17,6 +17,7 @@ type a struct {
 	sans   []string
 }
 
+// function for clearning commandline
 func cls() {
 	cmd := exec.Command("cmd", "/c", "cls")
 	cmd.Stdout = os.Stdout
@@ -24,8 +25,8 @@ func cls() {
 }
 
 func main() {
-
-	var data []a
+	//variables
+	var data []cnm
 	var city []string
 	var cinema []string
 	var film []string
@@ -35,6 +36,7 @@ func main() {
 	m1 := make(map[string]float64)
 	m2 := make(map[string]int)
 
+	//reading from data file
 	file, err := os.Open("data.txt")
 	if err != nil {
 		fmt.Println(err)
@@ -47,22 +49,23 @@ func main() {
 	}
 	file.Close()
 
+	//setting
 	for i := 0; i < len(lines); i++ {
-		var temp a
+		var temp cnm
 		temp.city = lines[i]
 		i++
 		temp.cinema = lines[i]
 		i++
-		b, err := strconv.ParseFloat(lines[i], 64)
+		a, err := strconv.ParseFloat(lines[i], 64)
 		if err == nil {
-			temp.score = b
+			temp.score = a
 			i++
 		}
 		temp.film = lines[i]
 		i++
-		c, err := strconv.Atoi(lines[i])
+		b, err := strconv.Atoi(lines[i])
 		if err == nil {
-			temp.number = c
+			temp.number = b
 			i++
 		}
 		for j := 0; j < len(lines); j++ {
@@ -74,7 +77,7 @@ func main() {
 		}
 		data = append(data, temp)
 	}
-	//fmt.Println(data)
+	//deleting repeated cities
 	sw := 0
 	for i := 0; i < len(data); i++ {
 		for j := 0; j < len(city); j++ {
@@ -89,6 +92,7 @@ func main() {
 		sw = 0
 	}
 
+	//sort city
 	for i := 0; i < len(city)-1; i++ {
 		for j := 0; j < len(city)-i-1; j++ {
 			if city[j] > city[j+1] {
@@ -99,11 +103,13 @@ func main() {
 		}
 	}
 
+	//print city
 	cls()
 	for i := 0; i < len(city); i++ {
 		fmt.Println(i+1, city[i])
 	}
 
+	//input city
 	for i := 0; i < 2; {
 		fmt.Println("input city number")
 		fmt.Scan(&input1)
@@ -112,6 +118,7 @@ func main() {
 		}
 	}
 
+	//sort cinema
 	for i := 0; i < len(data); i++ {
 		if city[input1-1] == data[i].city {
 			m1[data[i].cinema] = data[i].score
@@ -130,12 +137,14 @@ func main() {
 		}
 	}
 
+	//print cinema
 	cls()
 	fmt.Println("city :", city[input1-1])
 	for i := 0; i < len(cinema); i++ {
 		fmt.Println(i+1, "cinema :", cinema[i], "score :", m1[cinema[i]])
 	}
 
+	//input cinema
 	for i := 0; i < 2; {
 		fmt.Println("input cinema number")
 		fmt.Scan(&input2)
@@ -144,6 +153,7 @@ func main() {
 		}
 	}
 
+	//sort film
 	for i := 0; i < len(data); i++ {
 		if cinema[input2-1] == data[i].cinema {
 			m2[data[i].film] = data[i].number
@@ -162,6 +172,7 @@ func main() {
 		}
 	}
 
+	//print film
 	cls()
 	fmt.Println("city :", city[input1-1])
 	fmt.Println("cinema :", cinema[input2-1])
@@ -169,6 +180,7 @@ func main() {
 		fmt.Println(i+1, "film :", film[i], "number :", m2[film[i]])
 	}
 
+	//input film
 	for i := 0; i < 2; {
 		fmt.Println("input film number")
 		fmt.Scan(&input3)
