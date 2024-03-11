@@ -1,7 +1,7 @@
 tehran
-a
+cinemateh
 4.0
-alef
+The dark knight
 123
 16:00
 18:00
@@ -10,44 +10,44 @@ alef
 mashhad
 b
 3.7
-alef
-60
+Mission impossible 6
+90
 16:00
 18:00
 ******
 tehran
 t
 3.8
-be
-50
+The dark knight rises
+155
 16:00
 ******
 yazd
 f
 4.1
-jim
-35
+Deadpool 2
+85
 18:00
 22:00
 ******
 tabriz
 k
 3.8
-che
+8 mile
 93
 20:00
 ******
 zahedan
 t
 4.2
-mim
-142
+The wolf of wallstreet
+102
 16:00
 ******
 mashhad
 o
 3.6
-alef
+No hard feelings
 39
 16:00
 18:00
@@ -55,7 +55,7 @@ alef
 mashhad
 p
 3.5
-dal
+Suicide squad
 78
 20:00
 22:00
@@ -63,8 +63,17 @@ dal
 mashhad
 b
 3.7
-jim
+Napeleon
 80
 20:00
 22:00
+******
+karaj
+s
+3.6
+Fifty shades of grey
+69
+16:00
+18:00
+20:00
 ******
